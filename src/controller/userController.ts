@@ -3,7 +3,7 @@ import bycript from 'bcrypt';
 import {getUserData} from '../model/userModel';
 
 
-export const getUser = async <T>(req: Request, res: Response) => {
+const getUser = async <T>(req: Request, res: Response) => {
 
     try{
         const row = await getUserData(req.params.id);
@@ -35,3 +35,4 @@ export const getUser = async <T>(req: Request, res: Response) => {
     }
 }
 
+export default getUser;

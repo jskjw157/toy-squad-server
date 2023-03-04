@@ -6,8 +6,7 @@ import {
   readDataBase,
   readDataBaseJoin,
 } from '../data/database';
-//import getUser from '../controller/userController';
-const getUser = require('../controller/userController');
+import getUser from '../controller/userController';
 
 const userRouter = express.Router();
 
