@@ -10,6 +10,8 @@ import applicationRouter from './router/application';
 import proposalRouter from './router/propasal';
 import resultRouter from './router/result';
 import cookies from 'cookie-parser';
+import morgan from "morgan";
+import {accessLogStream} from './utils/log';
 
 const app = express();
 app.use(express.json());
@@ -21,6 +23,8 @@ app.use(
 );
 
 app.use(cookies());
+app.use(morgan('common', { stream: accessLogStream }));
+app.use(morgan('dev'));
 
 app.use('/user', userRouter);
 app.use('/auth', authRouter);
@@ -31,6 +35,7 @@ app.use('/answer', answerRouter);
 app.use('/application', applicationRouter);
 app.use('/proposal', proposalRouter);
 app.use('/result', resultRouter);
+
 
 app.listen('8000', () => {
   console.log(`
